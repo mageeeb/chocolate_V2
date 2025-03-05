@@ -7,7 +7,7 @@
             <img src="{{ asset('assets/img/nav-img/chocolat.png') }}" alt="">
         </div>
         <div id="links">
-            <a href="#">Accueil</a>
+            <a href="{{ path('app_homepage') }}">Accueil</a>
             <a href="javascript:void(0)" id="nav-recipes-link">Recettes<i class="fa-solid fa-arrow-down" style="margin-left: 10px;"></i></a>
             <a href="#">Contact</a>
         </div>
@@ -16,7 +16,7 @@
         <ul id="nav-recipes" style="display: none;">
             <a href="#"><li>Mousse au chocolat</li></a>
             <a href="#"><li>Polish cake</li></a>
-            <a href="#"><li>Fondant au Chocolat</li></a>
+            <a href="{{ path('app_max') }}"><li>Fondant au Chocolat</li></a>
             <a href="#"><li>Éclat Choco Amande</li></a>
             <a href="#"><li>Cookies au chocolat</li></a>
             <a href="#"><li>Glace au chocolat</li></a>
