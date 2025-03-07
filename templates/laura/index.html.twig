@@ -1,185 +1,165 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('assets/css/teams/cake.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/css/teams/fondant.css') }}" type="text/css">
 {% endblock %}
 
-{% block title %}Hello LauraController!{% endblock %}
+{% block title %}Hello MaxController!{% endblock %}
 
 {% block body %}
-    <div class="gateaushadow">
-        <div class="recipe">
-            <div class="recipe_image">
-                <img src="<?= $recipe->getSubRecipes()[0]->getImgUrl() ?>" alt="cakechoco" />
+    <header class="bannerImgFondant header-text mb-5">
+        <h1 class="textBanner">Cake au Chocolat</h1>
+    </header>
+
+
+    <section class="pb-5 pt-6">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card card-span shadow-lg">
+                        <div class="card-body py-0 cardTitre">
+                            <div class="row justify-content-center">
+                                <div class="col-md-7 col-xl-5 col-xxl-4 p-4 p-lg-5">
+                                    <h1 class="card-title mt-xl-3 mb-4 cardTitreMain">
+                                        Cake au
+                                        <span class="textTitre"> Chocolat</span>
+                                    </h1>
+                                    <p class="fs-1 description">
+                                        Découvrez la recette de cake au chocolat. Une recette facile à faire qui peut être préparée plusieurs jours avant l'arrivée de vos invités !
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="cardPreparation">
+        <div class="row">
+            <div class="col-md-3">
+                <div >
+                    <div class="card-body border border-dark colorCard">
+                        <h4 class="card-text mb-5 text-center titreIngredients">Ingredients pour 6 à 8 personnes</h4>
+                        <ul class="listeIngredients">
+                            <li class="text-light">200 g de chocolat noir pâtissier</li>
+                            <li class="text-light">150 g de beurre</li>
+                            <li class="text-light">120 g de sucre en poudre</li>
+                            <li class="text-light">3 œufs</li>
+                            <li class="text-light">100 g de farine</li>
+                            <li class="text-light">1/2 sachet de levure chimique</li>
+                            <li class="text-light">1 pincée de sel</li>
+                            <li class="text-light">10 cl de lait</li>
+                        </ul>
+                        <br><br>
+
+                        <p class="textColor text-center">Temps Total: 50min</p>
+                        <p class="textColor text-center">Préparation: 15min</p>
+                        <p class="textColor text-center">Cuisson: 30 à 35min</p>
+                        <div class="d-flex justify-content-between align-items-center p-4">
+                            <div class="ratings">
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <h5 class="review-count">12 Commentaires</h5>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="recipe_content">
-                <div class="recipe_content_heading">
-                    <h1 class="usg_text usg_text-heading"><?= $recipe->getName() ?></h1>
-                </div>
-
-                <div class="recipe_content_left-column">
-                    <div class="recipe_content_left-column_time">
-                        <div class="recipe_content_left-column_time_serves">
-                            <p class="usg_text usg_text-times"><span class="usg_text-times--text">Servis:</span> <?= $recipe->getNbPeople() ?> personne<?= $recipe->getNbPeople() > 1 ? 's' : '' ?></p>
-                        </div>
-                        <div class="recipe_content_left-column_time_prep">
-                            <p class="usg_text usg_text-times"><span class="usg_text-times--text">Preparation:</span> <?= $recipe->getPreparationTimeToString() ?></p>
-                        </div>
-                        <div class="recipe_content_left-column_time_cook">
-                            <p class="usg_text usg_text-times"><span class="usg_text-times--text">Cook:</span> <?= $recipe->getCookingTimeToString() ?></p>
-                        </div>
-                        <div class="recipe_content_left-column_time_cook">
-                            <p class="usg_text usg_text-times"><span class="usg_text-times--text">Degré de difficulté:</span>Facile</p>
-                        </div>
-
-                    </div>
-
-                    <div class="recipe_content_left-column_ingredients">
-                        <div class="recipe_content_left-column_ingredients_title">
-                            <h3 class="usg_text usg_text-title">Ingredients</h3>
-                            <ul class="usg_list recipe_content_left-column_ingredients_list">
-                                <?php foreach($recipe->getIngredients() as $ingredient): ?>
-                                <li class="usg_list_item recipe_content_left-column_ingredients_list_item usg_text-regular">
-                                    <span class="recipe_content_left-column_ingredients_list_item_main"><?= $ingredient ?></span>
-                                </li>
-                                <?php endforeach ?>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <?php foreach($recipe->getSubRecipes() as $subRecipe): ?>
-                <div class="recipe_content_right-column">
-                    <div class="recipe_content_right-column_description">
-                        <h3 class="usg_text usg_text-title"><?= $subRecipe->getTitle() ?></h3>
-                        <ol class="usg_list recipe_content_right-column_steps_list">
-                            <?php foreach($subRecipe->getInstructions() as $key => $instruction): ?>
-                            <li class="usg_list_item recipe_content_right-column_steps_list_item"><?= $instruction ?></li>
-                            <?php endforeach ?>
-                        </ol>
-                    </div>
-                </div>
-                <?php endforeach ?>
-                <div class="recipe_content_right-column_features">
-                    <ul class="usg_list recipe_content_right-column_features_list">
-                        <li class="usg_list_item recipe_content_right-column_features_list_item">Dégustez</li>
+            <div class="col-md-6">
+                <div class="card-body mb-5">
+                    <h4 class="card-title text-center titreColorPrepa">Préparation</h4>
+                    <ul>
+                        <li class="listPrepa">
+                            <h5 class="text-center textColorPrepa">Etape 1</h5>
+                            <p class="text-center mb-5 textColorPrepa">Préchauffer le four à 180°C (th.6).</p>
+                            <p class="text-center mb-5 textColorPrepa">Faire fondre le chocolat avec le beurre au bain-marie ou au micro-ondes (par intervalles de 30 secondes)</p>
+                        </li>
+                        <li class="listPrepa">
+                            <h5 class="text-center textColorPrepa">Etape 2</h5>
+                            <p  class="text-center mb-5 textColorPrepa">Battre les œufs avec le sucre jusqu'à ce que le mélange blanchisse.</p>
+                        </li>
+                        <li class="listPrepa">
+                            <h5 class="text-center textColorPrepa">Etape 3</h5>
+                            <p class="text-center mb-5 textColorPrepa">Ajouter la farine, la levure et le sel, puis bien mélanger..</p>
+                        </li>
+                        <li class="listPrepa">
+                            <h5 class="text-center textColorPrepa">Etape 4</h5>
+                            <p class="text-center mb-5 textColorPrepa">Incorporer le chocolat fondu et le lait, puis mélanger jusqu'à obtenir une pâte homogène.</p>
+                        </li>
+                        <li class="listPrepa">
+                            <h5 class="text-center textColorPrepa">Etape 5</h5>
+                            <p class="text-center mb-5 textColorPrepa">Verser dans un moule à cake beurré et fariné.</p>
+                        </li>
+                        <li class="listPrepa">
+                            <h5 class="text-center textColorPrepa">Etape 6</h5>
+                            <p class="text-center mb-5 textColorPrepa">Enfourner pour 30 à 35 minutes. Vérifier la cuisson avec la lame d’un couteau : elle doit ressortir légèrement humide.</p>
+                        </li>
+                        <li class="listPrepa">
+                            <h5 class="text-center textColorPrepa">Etape 7</h5>
+                            <p class="text-center mb-5 textColorPrepa">Laisser refroidir avant de démouler et déguster !</p>
+                        </li>
                     </ul>
                 </div>
             </div>
 
+            <div class="col-md-2">
+                <div class="card-body">
+                    <img src="{{ asset('img/cake/gateau4.jpg') }}" alt="fondant" class="imgFondantRecette">
+                </div>
+            </div>
+    </section>
+
+    <article class="ps-container photoContainer">
+        <section class="ps-photoset swiper-container hidden" id="carousel">
+            <img class="ps-photo" src="{{ asset('img/max/4.jpg') }}" />
+            <img class="ps-photo" src="{{ asset('img/max/5.jpg') }}" />
+            <img class="ps-photo" src="{{ asset('img/max/6.jpg') }}" /></section>
+    </article>
+
+    <div class="mainContainerForm formBg">
+        <div class="container px-5 my-5">
+            <p class="mb-5 text text-center titreForm">Si vous souhaitez partager votre commentaire, vous pouvez le faire ici :</p>
+            <div class="d-grid">
+                <button class="btn btn-md showForm" type="submit">Cliquez ici</button>
+            </div>
+
+            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                <div class="form-floating mb-3 ">
+                    <input class="form-control" id="nom" type="text" placeholder="Nom" data-sb-validations="required" />
+                    <div class="invalid-feedback" data-sb-feedback="nom:required">Vueillez introuduir votre nom.</div>
+                </div>
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="email" type="email" placeholder="Email" data-sb-validations="required,email" />
+                    <div class="invalid-feedback" data-sb-feedback="email:required">Veuillez introuduir votre email.</div>
+                    <div class="invalid-feedback" data-sb-feedback="email:email">L'email n'est pas valide.</div>
+                </div>
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" id="message" type="text" placeholder="Message" style="height: 10rem;" data-sb-validations="required"></textarea>
+                    <div class="invalid-feedback" data-sb-feedback="message:required">Vueillez introuduiter votre message.</div>
+                </div>
+
+
+                <div class="ratings mt-5 mb-2">
+                    <i class="fa fa-star rating-color"></i>
+                    <i class="fa fa-star rating-color"></i>
+                    <i class="fa fa-star rating-color"></i>
+                    <i class="fa fa-star rating-color"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <h5 class="etoiles mb-5">Que pensez vous de cette recette ?</h5>
+                <div class="d-none" id="submitErrorMessage">
+                    <div class="text-center text-danger mb-3">Error sending message!</div>
+                </div>
+                <div class="d-grid">
+                    <button class="btn btn-sm disabled submitButton" id="submitButton" type="submit">Envoyez votre message</button>
+                </div>
+            </form>
         </div>
-
-    </div>
-
-
-    <div class="feedback-form">
-        <h2>Vous avez aimez?</h2>
-        <form id="feedbackForm">
-            <div class="rating">
-                <!--étoile -->
-                <input type="radio" id="star5" name="rating" value="5">
-                <label for="star5">&#9733;</label>
-                <input type="radio" id="star4" name="rating" value="4">
-                <label for="star4">&#9733;</label>
-                <input type="radio" id="star3" name="rating" value="3">
-                <label for="star3">&#9733;</label>
-                <input type="radio" id="star2" name="rating" value="2">
-                <label for="star2">&#9733;</label>
-                <input type="radio" id="star1" name="rating" value="1">
-                <label for="star1">&#9733;</label>
-            </div>
-            <div class="comment">
-                <label for="comment">Partagez nous votre avis !</label><br>
-                <textarea id="comment" name="comment"></textarea>
-            </div>
-            <button type="submit" class="submit-btn">Envoyer</button>
-        </form>
-    </div>
-
-
-
-    <!-- commentaire Principal -->
-    <div class="comments-container">
-        <h1>Commentaire<a href="http://creaticode.com"></a></h1>
-
-        <ul id="comments-list" class="comments-list">
-            <li>
-                <div class="comment-main-level">
-                    <!-- Avatar -->
-                    <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
-
-                    <div class="comment-box">
-                        <div class="comment-head">
-                            <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Bruno Jemenfou</a></h6>
-                            <span>il y a 20 minute</span>
-                            <i class="fa fa-reply"></i>
-                            <i class="fa fa-heart"></i>
-                        </div>
-                        <div class="comment-content">
-                            Vraiment très bon. Mon mari est intolérant à la caséine (produits laitiers), on a remplacé le beurre par de l’huile de coco et ça va super bien
-                        </div>
-                    </div>
-                </div>
-                <!-- 2em commantaire -->
-                <ul class="comments-list reply-list">
-                    <li>
-                        <!-- Avatar -->
-                        <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
-
-                        <div class="comment-box">
-                            <div class="comment-head">
-                                <h6 class="comment-name"><a href="http://creaticode.com/blog">Lena Batlesreins</a></h6>
-                                <span>il y a 10 minute</span>
-                                <i class="fa fa-reply"></i>
-                                <i class="fa fa-heart"></i>
-                            </div>
-                            <div class="comment-content">
-                                J'ai beaucoup aimé le faire seul et avec mes enfants
-                                La plupart du temps j'en fait est je me régale
-                                Parfait , merci beaucoup
-                            </div>
-                        </div>
-                    </li>
-
-                    <li>
-                        <!-- Avatar -->
-                        <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
-
-                        <div class="comment-box">
-                            <div class="comment-head">
-                                <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Bruno Jemenfou</a></h6>
-                                <span>Il y a 9 minute</span>
-                                <i class="fa fa-reply"></i>
-                                <i class="fa fa-heart"></i>
-                            </div>
-                            <div class="comment-content">
-                                Recette parfaite !
-                                A mi-chemin entre le moelleux et le fondant, nous l'avons dégusté avec de la crème anglaise.
-                                C'est un régal
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-
-            <li>
-                <div class="comment-main-level">
-                    <!-- Avatar -->
-                    <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
-                    <!-- Contenedor del Comentario -->
-                    <div class="comment-box">
-                        <div class="comment-head">
-                            <h6 class="comment-name"><a href="http://creaticode.com/blog">Lena Batlesreins</a></h6>
-                            <span>il y a 7 minute</span>
-                            <i class="fa fa-reply"></i>
-                            <i class="fa fa-heart"></i>
-                        </div>
-                        <div class="comment-content">
-                            Trop bon! Je le fais met dans un moule à cake et je laisse cuire 5 à 10 minutes de plus en surveillant la cuisson pour ne pas qu'il soit brulé.
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
     </div>
 {% endblock %}
